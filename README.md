@@ -30,8 +30,56 @@ A visual tool to simulate, test, and track traffic between backend microservices
 - Java 21+
 - Node.js 20+
 - Docker & Docker Compose
+- GNU Make (optional, pre-installed on macOS/Linux)
 
-## Quick Start
+## Fast Commands
+
+All operations support targeting `all`, `backend`/`be`, `frontend`/`fe`, or `infra`.
+
+### Via Make (recommended)
+
+```bash
+make install          # Install everything (infra + backend + frontend)
+make install-be       # Backend only (Gradle build, skip tests)
+make install-fe       # Frontend only (npm install)
+make install-infra    # Start PostgreSQL + Kafka containers
+
+make start            # Start all services
+make start-be         # Start both backend services
+make start-fe         # Start Angular dev server
+make start-infra      # Start containers only
+
+make clean            # Clean everything (build artifacts + node_modules + containers + volumes)
+make clean-be         # Clean backend build artifacts
+make clean-fe         # Clean frontend (node_modules, dist, .angular)
+make clean-infra      # Stop containers and remove volumes
+
+make stop             # Stop all containers
+make status           # Show container status and ports
+make help             # Show all available commands
+```
+
+### Via Shell Scripts
+
+```bash
+./scripts/install.sh all        # or: backend, frontend, infra
+./scripts/start.sh all          # or: backend, visualizer, fake, frontend, infra
+./scripts/clean.sh all          # or: backend, frontend, infra
+```
+
+### One-Liner: From Zero to Running
+
+```bash
+make install && make start
+```
+
+### One-Liner: Full Reset
+
+```bash
+make clean && make install && make start
+```
+
+## Quick Start (Manual)
 
 ### 1. Start Infrastructure + hint-service
 
