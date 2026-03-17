@@ -1,0 +1,12 @@
+{
+  "/api": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/api/scenarios": {
+    "target": "http://localhost:8084",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

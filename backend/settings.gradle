@@ -1,0 +1,5 @@
+rootProject.name = 'service-visualizer'
+
+include 'visualizer-model'
+include 'visualizer-service'
+include 'fake-hint-caller'

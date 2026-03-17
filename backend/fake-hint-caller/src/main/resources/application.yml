@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: fake-hint-caller
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+server:
+  port: ${SERVER_PORT:8084}
+
+management:
+  server:
+    port: ${MANAGEMENT_PORT:8085}
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+# hint-service connection
+hint-service:
+  base-url: ${HINT_SERVICE_URL:http://localhost:8082/api}
+  kafka:
+    topic: ${KAFKA_HINT_TOPIC:elpa-hint-created}
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    de.signaliduna: ${LOG_LEVEL_SI:DEBUG}
